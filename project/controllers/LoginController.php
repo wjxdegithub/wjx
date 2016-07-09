@@ -15,7 +15,6 @@ class LoginController extends Controller{
      * 登录页面
      */
     public function actionIndex(){
-    	echo 3;
         return $this->render('login.html');
     }
 
