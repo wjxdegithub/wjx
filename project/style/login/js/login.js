@@ -17,10 +17,7 @@
 				show_loading();
 				var myReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; //邮件正则
 				if($('#email').val() == ''){
-					show_err_msg('邮箱还没填呢！');	
-					$('#email').focus();
-				}else if(!myReg.test($('#email').val())){
-					show_err_msg('您的邮箱格式错咯！');
+					show_err_msg('用户名还没填呢！');
 					$('#email').focus();
 				}else if($('#password').val() == ''){
 					show_err_msg('密码还没填呢！');
@@ -29,9 +26,9 @@
                     //获取跳转地址
                     var url=$('form').attr('action');
                     //获取账号密码
-                    var email = $(":input[name='email']").val();
+                    var username = $(":input[name='username']").val();
                     var password = $(":input[name='password']").val();
-                    $.post(url,{email:email,password:password},function(msg) {
+                    $.post(url,{username:username,password:password},function(msg) {
                         if (msg == 1) {
                             //ajax提交表单，#login_form为表单的ID。 如：$('#login_form').ajaxSubmit(function(data) { ... });
                             show_msg('登录成功咯！  正在为您跳转...','index.php?r=backstage/index');

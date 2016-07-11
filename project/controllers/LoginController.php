@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use yii\web\Controller;
-use app\models\User;
+use app\models\Admin;
 use app\models\Limit_ip;
 
 class LoginController extends Controller{
@@ -29,7 +29,10 @@ class LoginController extends Controller{
         //判断ip是否在限制范围内
         if(Limit_ip::find()->where(['ip'=>$ip])->one()){
             //验证账号密码
-            if(User::find()->where(['email'=>$login_info['email'],'pwd'=>$login_info['password']])->one()){
+            if(Admin::find()->where(['username'=>$login_info['username'],'pwd'=>md5($login_info['password'])])->one()){
+                //将当前登录用户信息存入session中
+                $session = \Yii::$app->session;
+                $session->set('user_info', $login_info);
                 echo 1;
             }else{
                 echo 0;

@@ -76,6 +76,17 @@ class Controller extends Component implements ViewContextInterface
      */
     public function __construct($id, $module, $config = [])
     {
+        //获取当前控制器名称
+        $URL = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $controller = substr($URL, strpos($URL, '=') + 1, strrpos($URL, '/') - (strpos($URL, '=') + 1));
+        //判断当前控制器是否为Login
+        if ($controller != 'login' && $controller != 'Login') {
+            //判断是否登录
+            $session = \Yii::$app->session;
+            if (!$session->get('user_info')) {
+                header("location:http://www.feng.com/month9/origin/project/web/index.php?r=login/index");
+            }
+        }
         $this->id = $id;
         $this->module = $module;
         parent::__construct($config);

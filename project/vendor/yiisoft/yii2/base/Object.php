@@ -8,6 +8,7 @@
 namespace yii\base;
 
 use Yii;
+use  yii\web\Session;
 
 /**
  * Object is the base class that implements the *property* feature.

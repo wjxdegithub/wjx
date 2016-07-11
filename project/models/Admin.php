@@ -7,7 +7,7 @@ use yii\db\ActiveRecord;
 /**
  * LoginForm is the model behind the login form.
  */
-class User extends ActiveRecord
+class Admin extends ActiveRecord
 {
 
 }

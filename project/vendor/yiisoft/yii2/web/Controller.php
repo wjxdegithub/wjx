@@ -30,6 +30,10 @@ class Controller extends \yii\base\Controller
     public $actionParams = [];
 
 
+    /*
+    * 检测是否登录
+    */
+
     /**
      * Renders a view in response to an AJAX request.
      *
