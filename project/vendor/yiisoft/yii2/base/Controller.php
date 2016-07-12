@@ -84,7 +84,7 @@ class Controller extends Component implements ViewContextInterface
             //判断是否登录
             $session = \Yii::$app->session;
             if (!$session->get('user_info')) {
-                header("location:http://www.feng.com/month9/origin/project/web/index.php?r=login/index");
+                header("location:index.php?r=login/index");die;
             }
         }
         $this->id = $id;
