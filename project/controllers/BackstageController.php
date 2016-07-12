@@ -84,6 +84,7 @@ class BackstageController extends Controller{
         //设置总数目和每页显示数量
         $count = count($data);
         $per = 6;
+        $page_num = ceil($count/$per);
         //获取当前页
         $request = \Yii::$app->request;
         $now_page = $request->post('page');
@@ -94,6 +95,6 @@ class BackstageController extends Controller{
         //获取分页后数据
         $sql = "select * from we_admin where username like '%$search_name%' limit $start,$per";
         $list = Admin::findBySql($sql)->all();
-        return $this->render('data_select',['list'=>$list,'count'=>$count,'search_name'=>$search_name]);
+        return $this->render('data_select',['list'=>$list,'count'=>$page_num,'search_name'=>$search_name]);
     }
 }
