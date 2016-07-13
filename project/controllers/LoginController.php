@@ -25,20 +25,15 @@ class LoginController extends Controller{
         //获取登录数据
         $request = \Yii::$app->request;
         $login_info = $request->post();
-        $ip = \Yii::$app->request->userIP;
-        //判断ip是否在限制范围内
-        if(Limit_ip::find()->where(['ip'=>$ip])->one()){
-            //验证账号密码
-            if(Admin::find()->where(['username'=>$login_info['username'],'pwd'=>md5($login_info['password'])])->one()){
-                //将当前登录用户信息存入session中
-                $session = \Yii::$app->session;
-                $session->set('user_info', $login_info);
-                echo 1;
-            }else{
-                echo 0;
-            }
+       
+        //验证账号密码
+        if(Admin::find()->where(['username'=>$login_info['username'],'pwd'=>md5($login_info['password'])])->one()){
+            //将当前登录用户信息存入session中
+            $session = \Yii::$app->session;
+            $session->set('user_info', $login_info);
+            echo 1;
         }else{
-            echo 2;
+            echo 0;
         }
     }
 }

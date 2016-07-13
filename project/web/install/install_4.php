@@ -32,7 +32,7 @@ if(!$is_success)
 					<div class="box clearfix">
 						<p class="red"><img src="images/error.gif" width="16" height="15" />警告：</p>
 						<p class="red intent">为了增强安全性，您必须删除'install'文件夹和自述文件。</p>
-						<a class="go_admin f_r" href="../web/index.php?r=backstage/index"></a>
+						<a class="go_admin f_r" href="../index.php?r=backstage/index"></a>
 					</div>
 				</div>
 			</div>

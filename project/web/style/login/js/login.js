@@ -32,8 +32,6 @@
                         if (msg == 1) {
                             //ajax提交表单，#login_form为表单的ID。 如：$('#login_form').ajaxSubmit(function(data) { ... });
                             show_msg('登录成功咯！  正在为您跳转...','index.php?r=backstage/index');
-                        } else if(msg == 2){
-                            show_err_msg('您好，你的IP暂时不允许登录，请联系管理员！');
                         }else{
                             show_err_msg('账号密码错咯！');
                         }

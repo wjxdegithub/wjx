@@ -214,14 +214,14 @@ function install_sql()
 	$mysql_link->query("SET FOREIGN_KEY_CHECKS = 1;");
 
 	//插入管理员数据
-	$adminSql = 'insert into `'.$db_pre.'admin` (`email`,`pwd`,`addtime`) values ("'.$admin_user.'","'.md5($admin_pwd).'","'.date('Y-m-d H:i:s').'")';
+	$adminSql = 'insert into `'.$db_pre.'admin` (`username`,`pwd`,`addtime`) values ("'.$admin_user.'","'.md5($admin_pwd).'","'.date('Y-m-d H:i:s').'")';
 	if(!$mysql_link->query($adminSql))
 	{
 		showProgress(array('isError' => true,'message' => '创建管理员失败'.$mysql_link->error,'percent' => 0.9));
 	}
 
 	//写入配置文件
-	$configFile    = ROOT_PATH.'./config/db.php';
+	$configFile    = ROOT_PATH.'../config/db.php';
     $updateData    ="<?php
     return [
         'class' => 'yii\db\Connection',

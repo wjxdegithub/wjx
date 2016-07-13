@@ -5,6 +5,7 @@ namespace app\controllers;
 use yii\web\Controller;
 use app\models\Admin;
 use yii\data\Pagination;
+use yii\db\Connection;
 
 class BackstageController extends Controller{
 
@@ -42,8 +43,10 @@ class BackstageController extends Controller{
                 $now_page=1;
             }
             $start = ($now_page-1)*$per;
+            //获取表前缀
+            $tablePrefix = \Yii::$app->db->tablePrefix;
             //获取分页后数据
-            $sql = "select * from we_admin limit $start,$per";
+            $sql = "select * from ".$tablePrefix."admin limit $start,$per";
             $list = Admin::findBySql($sql)->all();
             return $this->render('data_select',['list'=>$list,'count'=>$page_num]);
         }
@@ -59,14 +62,16 @@ class BackstageController extends Controller{
             $now_page=1;
         }
         $start = ($now_page-1)*$per;
+        //获取表前缀
+        $tablePrefix = \Yii::$app->db->tablePrefix;
         //判断是否存在搜索
         $search_name = $request->post('search_name');
         if(empty($search_name)){
             //获取分页后数据
-            $sql = "select * from we_admin limit $start,$per";
+            $sql = "select * from ".$tablePrefix."admin limit $start,$per";
         }else{
             //获取分页后数据
-            $sql = "select * from we_admin where username like '%$search_name%' limit $start,$per";
+            $sql = "select * from ".$tablePrefix."admin where username like '%$search_name%' limit $start,$per";
         }
         $list = Admin::findBySql($sql)->asArray()->all();
         //返回json
@@ -92,8 +97,10 @@ class BackstageController extends Controller{
             $now_page=1;
         }
         $start = ($now_page-1)*$per;
+        //获取表前缀
+        $tablePrefix = \Yii::$app->db->tablePrefix;
         //获取分页后数据
-        $sql = "select * from we_admin where username like '%$search_name%' limit $start,$per";
+        $sql = "select * from ".$tablePrefix."admin where username like '%$search_name%' limit $start,$per";
         $list = Admin::findBySql($sql)->all();
         return $this->render('data_select',['list'=>$list,'count'=>$page_num,'search_name'=>$search_name]);
     }

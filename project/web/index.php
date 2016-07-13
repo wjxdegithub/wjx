@@ -1,7 +1,7 @@
 <?php
 
 //判断是否安装
-if(file_exists('../install/install.lock')){
+if(file_exists('./install/install.lock')){
     // comment out the following two lines when deployed to production
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'dev');
@@ -13,6 +13,6 @@ if(file_exists('../install/install.lock')){
 
     (new yii\web\Application($config))->run();
 }else{
-    header("location:../install/index.php");
+    header("location:./install/index.php");
 }
 
